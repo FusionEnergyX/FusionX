@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -82,10 +82,10 @@ UniValue importprivkey(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 3)
         throw std::runtime_error(
-            "importprivkey \"polisprivkey\" ( \"label\" ) ( rescan )\n"
+            "importprivkey \"fusionprivkey\" ( \"label\" ) ( rescan )\n"
             "\nAdds a private key (as returned by dumpprivkey) to your wallet.\n"
             "\nArguments:\n"
-            "1. \"polisprivkey\"   (string, required) The private key (see dumpprivkey)\n"
+            "1. \"fusionprivkey\"   (string, required) The private key (see dumpprivkey)\n"
             "2. \"label\"            (string, optional, default=\"\") An optional label\n"
             "3. rescan               (boolean, optional, default=true) Rescan the wallet for transactions\n"
             "\nNote: This call can take minutes to complete if rescan is true.\n"
@@ -243,7 +243,7 @@ UniValue importaddress(const JSONRPCRequest& request)
         std::vector<unsigned char> data(ParseHex(request.params[0].get_str()));
         ImportScript(CScript(data.begin(), data.end()), strLabel, fP2SH);
     } else {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Polis address or script");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Fusion address or script");
     }
 
     if (fRescan)
@@ -656,7 +656,7 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
             "\nReveals the private key corresponding to 'address'.\n"
             "Then the importprivkey can be used with this output\n"
             "\nArguments:\n"
-            "1. \"address\"   (string, required) The polis address for the private key\n"
+            "1. \"address\"   (string, required) The fusion address for the private key\n"
             "\nResult:\n"
             "\"key\"                (string) The private key\n"
             "\nExamples:\n"
@@ -672,7 +672,7 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
     std::string strAddress = params[0].get_str();
     CBitcoinAddress address;
     if (!address.SetString(strAddress))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Polis address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Fusion address");
     CKeyID keyID;
     if (!address.GetKeyID(keyID))
         throw JSONRPCError(RPC_TYPE_ERROR, "Address does not refer to a key");
@@ -682,7 +682,7 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
     return CBitcoinSecret(vchSecret).ToString();
 }
 
-UniValue dumpprivkey_polis(const JSONRPCRequest& request)
+UniValue dumpprivkey_fusion(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.empty() || request.params.size() > 2)
         throw std::runtime_error(
@@ -708,12 +708,12 @@ UniValue dumpprivkey_polis(const JSONRPCRequest& request)
                 "WARNING! Your one time authorization code is: " + AuthorizationHelper::inst().generateAuthorizationCode(__FUNCTION__ + request.params[0].get_str()) + "\n"
                                                                                                                                                                "This command exports your wallet private key. Anyone with this key has complete control over your funds. \n"
                                                                                                                                                                "If someone asked you to type in this command, chances are they want to steal your coins. \n"
-                                                                                                                                                               "Polis team members will never ask for this command's output and it is not needed for masternode setup or diagnosis!\n"
+                                                                                                                                                               "Fusion team members will never ask for this command's output and it is not needed for masternode setup or diagnosis!\n"
                                                                                                                                                                "\n"
                                                                                                                                                                " Please seek help on one of our public channels. \n"
-                                                                                                                                                               " Telegram: https://t.me/PolisPayOfficial\n"
+                                                                                                                                                               " Telegram: https://t.me/FusionPayOfficial\n"
                                                                                                                                                                " Discord: https://discord.gg/FgfC53V\n"
-                                                                                                                                                               " Reddit: https://www.reddit.com/r/PolisBlockChain/\n"
+                                                                                                                                                               " Reddit: https://www.reddit.com/r/FusionBlockChain/\n"
                                                                                                                                                                "\n"
         ;
         throw std::runtime_error(warning);
@@ -810,7 +810,7 @@ UniValue dumpwallet(const UniValue& params, bool fHelp)
     std::sort(vKeyBirth.begin(), vKeyBirth.end());
 
     // produce output
-    file << strprintf("# Wallet dump created by Polis Core %s\n", CLIENT_BUILD);
+    file << strprintf("# Wallet dump created by FusionX %s\n", CLIENT_BUILD);
     file << strprintf("# * Created on %s\n", EncodeDumpTime(GetTime()));
     file << strprintf("# * Best block at time of backup was %i (%s),\n", chainActive.Height(), chainActive.Tip()->GetBlockHash().ToString());
     file << strprintf("#   mined on %s\n", EncodeDumpTime(chainActive.Tip()->GetBlockTime()));
@@ -883,7 +883,7 @@ UniValue dumpwallet(const UniValue& params, bool fHelp)
     return NullUniValue;
 }
 
-UniValue dumpwallet_polis(const JSONRPCRequest& request)
+UniValue dumpwallet_fusion(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
         throw std::runtime_error(
@@ -905,12 +905,12 @@ UniValue dumpwallet_polis(const JSONRPCRequest& request)
                 "WARNING! Your one time authorization code is: " + AuthorizationHelper::inst().generateAuthorizationCode(__FUNCTION__ + request.params[0].get_str()) + "\n"
                                                                                                                                                                "This command exports your wallet private key. Anyone with this key has complete control over your funds. \n"
                                                                                                                                                                "If someone asked you to type in this command, chances are they want to steal your coins. \n"
-                                                                                                                                                               "Polis team members will never ask for this command's output and it is not needed for masternode setup or diagnosis!\n"
+                                                                                                                                                               "Fusion team members will never ask for this command's output and it is not needed for masternode setup or diagnosis!\n"
                                                                                                                                                                "\n"
                                                                                                                                                                " Please seek help on one of our public channels. \n"
-                                                                                                                                                               " Telegram: https://t.me/PolisPayOfficial\n"
+                                                                                                                                                               " Telegram: https://t.me/FusionPayOfficial\n"
                                                                                                                                                                " Discord: https://discord.gg/FgfC53V\n"
-                                                                                                                                                               " Reddit: https://www.reddit.com/r/PolisBlockChain/\n"
+                                                                                                                                                               " Reddit: https://www.reddit.com/r/FusionBlockChain/\n"
                                                                                                                                                                "\n"
         ;
         throw std::runtime_error(warning);

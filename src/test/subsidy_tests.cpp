@@ -1,11 +1,11 @@
-// Copyright (c) 2014-2018 The Polis Core developers
+// Copyright (c) 2014-2018 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chainparams.h"
 #include "validation.h"
 
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <boost/test/unit_test.hpp>
 

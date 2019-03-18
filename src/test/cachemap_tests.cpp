@@ -1,8 +1,8 @@
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 
 #include "cachemap.h"
 
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <boost/test/unit_test.hpp>
 

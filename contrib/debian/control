@@ -1,8 +1,8 @@
-Source: polis
+Source: fusion
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@polis.org>
-Uploaders: Holger Schinzel <holger@polis.org>
+Maintainer: Holger Schinzel <holger@fusion.org>
+Uploaders: Holger Schinzel <holger@fusion.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -26,45 +26,45 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://www.polispay.org/
-Vcs-Git: git://github.com/polispay/polis.git
-Vcs-Browser: https://github.com/polispay/polis
+Homepage: https://www.fusionpay.org/
+Vcs-Git: git://github.com/fusionpay/fusion.git
+Vcs-Browser: https://github.com/fusionpay/fusion
 
-Package: polisd
+Package: fusiond
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Polis is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Polis uses peer-to-peer
+ Fusion is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Fusion uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Polis Core
+ and issuing money are carried out collectively by the network. FusionX
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, polisd, and the CLI tool
- polis-cli to interact with the daemon.
+ This package provides the daemon, fusiond, and the CLI tool
+ fusion-cli to interact with the daemon.
 
-Package: polis-qt
+Package: fusion-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Polis is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Polis uses peer-to-peer
+ Fusion is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Fusion uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Polis Core
+ and issuing money are carried out collectively by the network. FusionX
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Polis-Qt, a GUI for Polis based on Qt.
+ This package provides Fusion-Qt, a GUI for Fusion based on Qt.
 
-Package: polis-tx
+Package: fusion-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Polis is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Polis uses peer-to-peer
+ Fusion is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Fusion uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Polis Core
+ and issuing money are carried out collectively by the network. FusionX
  is the name of the open source software which enables the use of this currency.
  .
- This package provides polis-tx, a command-line transaction creation
- tool which can be used without a polis daemon.  Some means of
+ This package provides fusion-tx, a command-line transaction creation
+ tool which can be used without a fusion daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

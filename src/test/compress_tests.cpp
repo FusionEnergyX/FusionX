@@ -4,7 +4,7 @@
 
 #include "compressor.h"
 #include "util.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <stdint.h>
 

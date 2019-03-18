@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../polis.qrc"/>
+  <include location="../fusion.qrc"/>
  </resources>
  <connections/>
 </ui>

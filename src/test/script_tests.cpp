@@ -12,10 +12,10 @@
 #include "script/sign.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #if defined(HAVE_CONSENSUS_LIB)
-#include "script/polisconsensus.h"
+#include "script/fusionconsensus.h"
 #endif
 
 #include <fstream>
@@ -154,9 +154,9 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, int flags, co
 #if defined(HAVE_CONSENSUS_LIB)
     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
     stream << tx2;
-    int libconsensus_flags = flags & polisconsensus_SCRIPT_FLAGS_VERIFY_ALL;
+    int libconsensus_flags = flags & fusionconsensus_SCRIPT_FLAGS_VERIFY_ALL;
     if (libconsensus_flags == flags) {
-        BOOST_CHECK_MESSAGE(polisconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect,message);
+        BOOST_CHECK_MESSAGE(fusionconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, NULL) == expect,message);
     }
 #endif
 }

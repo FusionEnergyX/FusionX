@@ -1,7 +1,7 @@
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
-#ifndef POLIS_HDCHAIN_H
-#define POLIS_HDCHAIN_H
+#ifndef FUSION_HDCHAIN_H
+#define FUSION_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -147,4 +147,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // POLIS_HDCHAIN_H
+#endif // FUSION_HDCHAIN_H

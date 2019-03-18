@@ -4,7 +4,7 @@
 #include "arith_uint256.h"
 #include "uint256.h"
 #include "version.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <boost/test/unit_test.hpp>
 #include <stdint.h>

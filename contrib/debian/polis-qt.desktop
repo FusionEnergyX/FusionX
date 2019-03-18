@@ -1,13 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Polis Core
-Comment=Polis P2P Cryptocurrency
-Comment[de]=Verbinde mit dem Polis peer-to-peer Netzwerk
-Comment[fr]=Polis, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Polis, eşten eşe kriptografik sanal para birimi
-Exec=polis-qt %u
+Name=FusionX
+Comment=Fusion P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Fusion peer-to-peer Netzwerk
+Comment[fr]=Fusion, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Fusion, eşten eşe kriptografik sanal para birimi
+Exec=fusion-qt %u
 Terminal=false
 Type=Application
-Icon=polis128
-MimeType=x-scheme-handler/polis;
+Icon=fusion128
+MimeType=x-scheme-handler/fusion;
 Categories=Office;Finance;

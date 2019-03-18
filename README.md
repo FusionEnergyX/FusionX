@@ -1,41 +1,41 @@
-![Polis](https://github.com/polispay/polis/raw/master/src/qt/res/icons/bitcoin.png "Polis")
+![Fusion](https://github.com/fusionpay/fusion/raw/master/src/qt/res/icons/bitcoin.png "Fusion")
 
-POLIS Core integration/staging tree
+FUSION Core integration/staging tree
 =====================================
-[![Build Status](https://travis-ci.org/polispay/polis.svg?branch=master)](https://travis-ci.org/polispay/polis)
+[![Build Status](https://travis-ci.org/fusionpay/fusion.svg?branch=master)](https://travis-ci.org/fusionpay/fusion)
 
 
-http://www.polispay.org
+http://www.fusionpay.org
 
 - Copyright (c) 2009-2015 Bitcoin Developers
 - Copyright (c) 2014-2017 Dash Developers
-- Copyright (c) 2017-2018 Polis Developers
+- Copyright (c) 2017-2018 Fusion Developers
 
-What is Polis?
+What is Fusion?
 ----------------
 
-Polis is an experimental digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. Polis uses peer-to-peer technology
+Fusion is an experimental digital currency that enables anonymous, instant
+payments to anyone, anywhere in the world. Fusion uses peer-to-peer technology
 to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. Polis Core is the name of the open
+are carried out collectively by the network. FusionX is the name of the open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Polis Core software, see https://www.polispay.org/Find-polis/.
+the FusionX software, see https://www.fusionpay.org/Find-fusion/.
 
 
 License
 -------
 
-Polis Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+FusionX is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/polispay/polis/tags) are created to indicate new official,
-stable release versions of Polis Core.
+[Tags](https://github.com/fusionpay/fusion/tags) are created to indicate new official,
+stable release versions of FusionX.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -71,7 +71,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[Polis Core's Transifex page](https://www.transifex.com/projects/p/polis/).
+[FusionX's Transifex page](https://www.transifex.com/projects/p/fusion/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.
@@ -79,4 +79,4 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also follow the [forum](https://www.polispay.org/forum/topic/polis-worldwide-collaboration.88/).
+Translators should also follow the [forum](https://www.fusionpay.org/forum/topic/fusion-worldwide-collaboration.88/).

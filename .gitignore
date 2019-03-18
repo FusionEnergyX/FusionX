@@ -80,7 +80,7 @@ libconftest.dylib*
 *.qm
 Makefile
 polis-qt
-Polis-Qt.app
+Fusion-Qt.app
 
 # Unit-tests
 Makefile.test

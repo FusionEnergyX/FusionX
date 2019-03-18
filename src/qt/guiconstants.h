@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* PolisGUI -- Size of icons in status bar */
+/* FusionGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -49,10 +49,10 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Polis"
-#define QAPP_ORG_DOMAIN "polispay.org"
-#define QAPP_APP_NAME_DEFAULT "Polis-Qt"
-#define QAPP_APP_NAME_TESTNET "Polis-Qt-testnet"
-#define QAPP_APP_NAME_DEVNET "Polis-Qt-%s"
+#define QAPP_ORG_NAME "Fusion"
+#define QAPP_ORG_DOMAIN "fusionpay.org"
+#define QAPP_APP_NAME_DEFAULT "Fusion-Qt"
+#define QAPP_APP_NAME_TESTNET "Fusion-Qt-testnet"
+#define QAPP_APP_NAME_DEVNET "Fusion-Qt-%s"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

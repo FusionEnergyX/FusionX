@@ -11,9 +11,9 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubrawtxlock`: publishes the raw transaction when locked via InstantSend
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
 
-This mechanism has been integrated into Bitcore-Node-Polis which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/polispay/insight-api-polis#web-socket-api](https://github.com/polispay/insight-api-polis#web-socket-api)
-* API: [https://github.com/polispay/insight-api-polis#instantsend-transactions](https://github.com/polispay/insight-api-polis#instantsend-transactions)
+This mechanism has been integrated into Bitcore-Node-Fusion which allows for notification to be broadcast through Insight API in one of two ways:
+* WebSocket: [https://github.com/fusionpay/insight-api-fusion#web-socket-api](https://github.com/fusionpay/insight-api-fusion#web-socket-api)
+* API: [https://github.com/fusionpay/insight-api-fusion#instantsend-transactions](https://github.com/fusionpay/insight-api-fusion#instantsend-transactions)
 
 #### Command line option
 
@@ -27,13 +27,13 @@ When a wallet InstantSend transaction is successfully locked a shell command pro
 
 Details pertaining to an observed "Transaction Lock" can also be retrieved through RPC, it’s important however to understand the underlying mechanism.
 
-By default, the Polis Core daemon will launch using the following constant:
+By default, the FusionX daemon will launch using the following constant:
 
 ```
 static const int DEFAULT_INSTANTSEND_DEPTH = 5;
 ```
 
-This value can be overridden by passing the following argument to the Polis Core daemon:
+This value can be overridden by passing the following argument to the FusionX daemon:
 
 ```
 -instantsenddepth=<n>

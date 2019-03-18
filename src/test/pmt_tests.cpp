@@ -9,7 +9,7 @@
 #include "uint256.h"
 #include "arith_uint256.h"
 #include "version.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 #include "test/test_random.h"
 
 #include <vector>

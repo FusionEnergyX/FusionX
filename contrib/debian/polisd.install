@@ -1,2 +1,2 @@
-usr/local/bin/polisd usr/bin
-usr/local/bin/polis-cli usr/bin
+usr/local/bin/fusiond usr/bin
+usr/local/bin/fusion-cli usr/bin

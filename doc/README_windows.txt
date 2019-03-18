@@ -1,9 +1,9 @@
-Polis Core 1.4.5
+FusionX 1.4.5
 =====================
 
 Intro
 -----
-Polis is a free open source peer-to-peer electronic cash system that is
+Fusion is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -11,13 +11,13 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run polis-qt.exe.
+Unpack the files into a directory and run fusion-qt.exe.
 
-Polis Core is the original Polis client and it builds the backbone of the network.
-However, it downloads and stores the entire history of Polis transactions;
+FusionX is the original Fusion client and it builds the backbone of the network.
+However, it downloads and stores the entire history of Fusion transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.
 
-See the polis wiki at:
-  https://polispay.atlassian.net/wiki/
+See the fusion wiki at:
+  https://fusionpay.atlassian.net/wiki/
 for more help and information.

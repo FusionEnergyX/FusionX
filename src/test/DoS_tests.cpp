@@ -14,7 +14,7 @@
 #include "util.h"
 #include "validation.h"
 
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <stdint.h>
 

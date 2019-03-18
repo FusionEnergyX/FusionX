@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between polis-cli and polisd)
- * of a given instance of the Polis system.
+ * CBaseChainParams defines the base parameters (shared between fusion-cli and fusiond)
+ * of a given instance of the Fusion system.
  */
 class CBaseChainParams
 {

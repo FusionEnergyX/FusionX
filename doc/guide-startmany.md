@@ -16,9 +16,9 @@ Create a new wallet address for each Masternode.
 
 Close your QT Wallet.
 
-### Send 1000 POLIS to New Addresses
+### Send 1000 FUSION to New Addresses
 
-Send exactly 1000 POLIS to each new address created above.
+Send exactly 1000 FUSION to each new address created above.
 
 ### Create New Masternode Private Keys
 
@@ -38,9 +38,9 @@ Remember... this is local. Make sure your QT is not running.
 
 Create the `masternode.conf` file in the same directory as your `wallet.dat`.
 
-Copy the masternode private key and correspondig collateral output transaction that holds the 1000 POLIS.
+Copy the masternode private key and correspondig collateral output transaction that holds the 1000 FUSION.
 
-*Note: The masternode priviate key is **not** the same as a wallet private key. **Never** put your wallet private key in the masternode.conf file. That is almost equivalent to putting your 1000 POLIS on the remote server and defeats the purpose of a hot/cold setup.*
+*Note: The masternode priviate key is **not** the same as a wallet private key. **Never** put your wallet private key in the masternode.conf file. That is almost equivalent to putting your 1000 FUSION on the remote server and defeats the purpose of a hot/cold setup.*
 
 ### Get the collateral output
 
@@ -53,7 +53,7 @@ Issue the following:
 Make note of the hash (which is your collateral_output) and index.
 
 ### Enter your Masternode details into your masternode.conf file
-[From the polis github repo](https://github.com/polispay/polis/blob/master/doc/masternode_conf.md)
+[From the fusion github repo](https://github.com/fusionpay/fusion/blob/master/doc/masternode_conf.md)
 
 `masternode.conf` format is a space seperated text file. Each line consisting of an alias, IP address followed by port, masternode private key, collateral output transaction id and collateral output index.
 
@@ -68,16 +68,16 @@ mn01 127.0.0.1:24126 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c8
 mn02 127.0.0.2:24126 93WaAb3htPJEV8E9aQcN23Jt97bPex7YvWfgMDTUdWJvzmrMqey aa9f1034d973377a5e733272c3d0eced1de22555ad45d6b24abadff8087948d4 0
 ```
 
-## Update polis.conf on server
+## Update fusion.conf on server
 
-If you generated a new masternode private key, you will need to update the remote `polis.conf` files.
+If you generated a new masternode private key, you will need to update the remote `fusion.conf` files.
 
 Shut down the daemon and then edit the file.
 
-```nano .poliscore/polis.conf```
+```nano .fusioncore/fusion.conf```
 
 ### Edit the masternodeprivkey
-If you generated a new masternode private key, you will need to update the `masternodeprivkey` value in your remote `polis.conf` file.
+If you generated a new masternode private key, you will need to update the `masternodeprivkey` value in your remote `fusion.conf` file.
 
 ## Start your Masternodes
 
@@ -87,9 +87,9 @@ If your remote server is not running, start your remote daemon as you normally w
 
 You can confirm that remote server is on the correct block by issuing
 
-```polis-cli getinfo```
+```fusion-cli getinfo```
 
-and comparing with the official explorer at https://explorer.polispay.org/chain/Polis
+and comparing with the official explorer at https://explorer.fusionpay.org/chain/Fusion
 
 ### Local
 
@@ -116,11 +116,11 @@ Example ```masternode start-alias mn01```
 Issue command `masternode status`
 It should return you something like that:
 ```
-polis-cli masternode status
+fusion-cli masternode status
 {
     "outpoint" : "<collateral_output>-<collateral_output_index>",
     "service" : "<ipaddress>:<port>",
-    "pubkey" : "<1000 POLIS address>",
+    "pubkey" : "<1000 FUSION address>",
     "status" : "Masternode successfully started"
 }
 ```
@@ -128,6 +128,6 @@ Command output should have "_Masternode successfully started_" in its `status` f
 
 ### Local
 
-Search your Masternodes on https://polisninja.pl/masternodes.html
+Search your Masternodes on https://fusionninja.pl/masternodes.html
 
 _Hint: Bookmark it, you definitely will be using this site a lot._

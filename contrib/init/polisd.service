@@ -1,15 +1,15 @@
 [Unit]
-Description=Polis's distributed currency daemon
+Description=Fusion's distributed currency daemon
 After=network.target
 
 [Service]
-User=poliscore
-Group=poliscore
+User=fusioncore
+Group=fusioncore
 
 Type=forking
-PIDFile=/var/lib/polisd/polisd.pid
-ExecStart=/usr/bin/polisd -daemon -pid=/var/lib/polisd/polisd.pid \
--conf=/etc/poliscore/polis.conf -datadir=/var/lib/polisd -disablewallet
+PIDFile=/var/lib/fusiond/fusiond.pid
+ExecStart=/usr/bin/fusiond -daemon -pid=/var/lib/fusiond/fusiond.pid \
+-conf=/etc/fusioncore/fusion.conf -datadir=/var/lib/fusiond -disablewallet
 
 Restart=always
 PrivateTmp=true

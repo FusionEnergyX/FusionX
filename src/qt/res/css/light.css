@@ -643,16 +643,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
     border:0;
 }
 
-/* About Polis Dialog */
+/* About Fusion Dialog */
 QDialog#AboutDialog {
     background-color:#F8F6F6;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Polis Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Fusion Contents */
     margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About Polis text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Fusion text */
     margin-right:10px;
 }
 
@@ -959,7 +959,7 @@ QWidget .QFrame#frame_2 { /* Transactions Widget */
     margin-right:20px;
     margin-left:0;
     margin-top:15px;
-    background-image: url(':/images/light/polis_logo_horizontal');
+    background-image: url(':/images/light/fusion_logo_horizontal');
     background-repeat:none;
     background-position: center top;
 }

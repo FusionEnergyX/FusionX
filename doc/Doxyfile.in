@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Polis Core"
+PROJECT_NAME           = "FusionX"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -86,7 +86,7 @@ ALLOW_UNICODE_NAMES    = NO
 # Esperanto, Farsi (Persian), Finnish, French, German, Greek, Hungarian,
 # Indonesian, Italian, Japanese, Japanese-en (Japanese with English messages),
 # Korean, Korean-en (Korean with English messages), Latvian, Lithuanian,
-# Macedonian, Norwegian, Persian (Farsi), Polish, Portuguese, Romanian, Russian,
+# Macedonian, Norwegian, Persian (Farsi), Fusionh, Portuguese, Romanian, Russian,
 # Serbian, Serbian-Cyrillic, Slovak, Slovene, Spanish, Swedish, Turkish,
 # Ukrainian and Vietnamese.
 # The default value is: English.

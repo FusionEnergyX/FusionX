@@ -1,0 +1,21 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/fusion_bg.qm</file>
+        <file alias="de">locale/fusion_de.qm</file>
+        <file alias="en">locale/fusion_en.qm</file>
+        <file alias="es">locale/fusion_es.qm</file>
+        <file alias="fi">locale/fusion_fi.qm</file>
+        <file alias="fr">locale/fusion_fr.qm</file>
+        <file alias="it">locale/fusion_it.qm</file>
+        <file alias="ja">locale/fusion_ja.qm</file>
+        <file alias="nl">locale/fusion_nl.qm</file>
+        <file alias="pl">locale/fusion_pl.qm</file>
+        <file alias="pt">locale/fusion_pt.qm</file>
+        <file alias="ru">locale/fusion_ru.qm</file>
+        <file alias="sk">locale/fusion_sk.qm</file>
+        <file alias="sv">locale/fusion_sv.qm</file>
+        <file alias="vi">locale/fusion_vi.qm</file>
+        <file alias="zh_CN">locale/fusion_zh_CN.qm</file>
+        <file alias="zh_TW">locale/fusion_zh_TW.qm</file>
+    </qresource>
+</RCC>

@@ -5,7 +5,7 @@
 #include "serialize.h"
 #include "streams.h"
 #include "hash.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <stdint.h>
 

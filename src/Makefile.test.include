@@ -1,13 +1,13 @@
 # Copyright (c) 2013-2017 The Bitcoin Core developers
 # Copyright (c) 2014-2018 The Dash Core developers
-# Copyright (c) 2018-2019 The Polis Core developers
+# Copyright (c) 2018-2019 The FusionX developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TESTS += test/test_polis
-bin_PROGRAMS += test/test_polis
+TESTS += test/test_fusion
+bin_PROGRAMS += test/test_fusion
 TEST_SRCDIR = test
-TEST_BINARY=test/test_polis$(EXEEXT)
+TEST_BINARY=test/test_fusion$(EXEEXT)
 
 
 EXTRA_DIST += \
@@ -124,8 +124,8 @@ BITCOIN_TESTS =\
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
   test/subsidy_tests.cpp \
-  test/test_polis.cpp \
-  test/test_polis.h \
+  test/test_fusion.cpp \
+  test/test_fusion.h \
   test/test_random.h \
   test/testutil.cpp \
   test/testutil.h \
@@ -146,23 +146,23 @@ BITCOIN_TESTS += \
   wallet/test/crypto_tests.cpp
 endif
 
-test_test_polis_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_polis_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
-test_test_polis_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+test_test_fusion_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_fusion_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_fusion_LDADD = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS)
-test_test_polis_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_fusion_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 if ENABLE_WALLET
-test_test_polis_LDADD += $(LIBBITCOIN_WALLET)
+test_test_fusion_LDADD += $(LIBBITCOIN_WALLET)
 endif
 
-test_test_polis_LDADD += $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-test_test_polis_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+test_test_fusion_LDADD += $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+test_test_fusion_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
 
 if ENABLE_ZMQ
-test_test_polis_LDADD += $(ZMQ_LIBS)
+test_test_fusion_LDADD += $(ZMQ_LIBS)
 endif
 
-nodist_test_test_polis_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_fusion_SOURCES = $(GENERATED_TEST_FILES)
 
 $(BITCOIN_TESTS): $(GENERATED_TEST_FILES)
 
@@ -173,13 +173,13 @@ CLEANFILES += $(CLEAN_BITCOIN_TEST)
 # This file is problematic for out-of-tree builds if it exists.
 DISTCLEANFILES += test/buildenv.pyc
 
-polis_test: $(TEST_BINARY)
+fusion_test: $(TEST_BINARY)
 
-polis_test_check: $(TEST_BINARY) FORCE
+fusion_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-polis_test_clean : FORCE
-	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_polis_OBJECTS) $(TEST_BINARY)
+fusion_test_clean : FORCE
+	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_fusion_OBJECTS) $(TEST_BINARY)
 
 check-local:
 	@echo "Running test/bitcoin-util-test.py..."

@@ -10,7 +10,7 @@
 #include "crypto/hmac_sha256.h"
 #include "crypto/hmac_sha512.h"
 #include "utilstrencodings.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 #include "test/test_random.h"
 
 #include <vector>

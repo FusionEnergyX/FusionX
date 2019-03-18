@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 
 #include "governance-validators.h"
 #include "utilstrencodings.h"
@@ -6,7 +6,7 @@
 #include "data/proposals_valid.json.h"
 #include "data/proposals_invalid.json.h"
 
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <iostream>
 #include <fstream>

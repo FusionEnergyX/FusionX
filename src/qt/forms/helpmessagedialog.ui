@@ -73,7 +73,7 @@
         <bool>false</bool>
        </property>
        <property name="pixmap">
-        <pixmap resource="../polis.qrc">:/images/drkblue/about</pixmap>
+        <pixmap resource="../fusion.qrc">:/images/drkblue/about</pixmap>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
@@ -169,7 +169,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../polis.qrc"/>
+  <include location="../fusion.qrc"/>
  </resources>
  <connections>
   <connection>

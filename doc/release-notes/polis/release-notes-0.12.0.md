@@ -2,13 +2,13 @@
 ====================
 
 
-Polis Core version 0.12.0 is now available from:
+FusionX version 0.12.0 is now available from:
 
-  https://polispay.io/downloads
+  https://fusionpay.io/downloads
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/polispay/polis/issues
+  https://github.com/fusionpay/fusion/issues
 
 
 How to Upgrade
@@ -16,8 +16,8 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Polis-Qt (on Mac) or
-polisd/polis-qt (on Linux).
+installer (on Windows) or just copy over /Applications/Fusion-Qt (on Mac) or
+fusiond/fusion-qt (on Linux).
 
 **This new version uses transaction indexing by default, you will need to reindex 
 the blockchain. To do so, start the client with --reindex.**
@@ -28,7 +28,7 @@ Downgrade warning
 
 Because release 0.12.0 and later makes use of headers-first synchronization and
 parallel block download (see further), the block files and databases are not
-backwards-compatible with pre-0.12 versions of Polis Core or other software:
+backwards-compatible with pre-0.12 versions of FusionX or other software:
 
 * Blocks will be stored on disk out of order (in the order they are
 received, really), which makes it incompatible with some tools or
@@ -100,4 +100,4 @@ AlexMomo
 snogcel
 bertlebbert
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/polis/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/fusion/).

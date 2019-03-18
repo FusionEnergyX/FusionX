@@ -1,6 +1,6 @@
 [Protocol]
-exec=polis-qt '%u'
-protocol=polis
+exec=fusion-qt '%u'
+protocol=fusion
 input=none
 output=none
 helper=true

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -38,7 +38,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// PolisMiner
+// FusionMiner
 //
 
 //
@@ -677,9 +677,9 @@ static bool ProcessBlockFound(const std::shared_ptr<const CBlock> &pblock, const
 void static BitcoinMiner(const CChainParams& chainparams, CConnman& connman,
                          CWallet* pwallet, bool fProofOfStake)
 {
-    LogPrintf("PolisMiner -- started\n");
+    LogPrintf("FusionMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("polis-miner");
+    RenameThread("fusion-miner");
     unsigned int nExtraNonce = 0;
     boost::shared_ptr<CReserveScript> coinbaseScript;
     GetMainSignals().ScriptForMining(coinbaseScript);
@@ -724,13 +724,13 @@ void static BitcoinMiner(const CChainParams& chainparams, CConnman& connman,
             std::unique_ptr<CBlockTemplate> pblocktemplate(BlockAssembler(Params()).CreateNewBlock(pwallet, chainparams, coinbaseScript->reserveScript, fProofOfStake));
             if (!pblocktemplate.get())
             {
-                LogPrintf("PolisMiner -- Failed to find a coinstake\n");
+                LogPrintf("FusionMiner -- Failed to find a coinstake\n");
                 MilliSleep(5000);
                 continue;
             }
             auto pblock = std::make_shared<CBlock>(pblocktemplate->block);
             IncrementExtraNonce(pblock.get(), pindexPrev, nExtraNonce);
-            LogPrintf("PolisMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("FusionMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                       ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
             //Sign block
             if (fProofOfStake)
@@ -773,7 +773,7 @@ void static BitcoinMiner(const CChainParams& chainparams, CConnman& connman,
                     {
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("PolisMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("FusionMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -812,12 +812,12 @@ void static BitcoinMiner(const CChainParams& chainparams, CConnman& connman,
         }
         catch (const boost::thread_interrupted&)
         {
-            LogPrintf("PolisMiner -- terminated\n");
+            LogPrintf("FusionMiner -- terminated\n");
             throw;
         }
         catch (const std::runtime_error &e)
         {
-            LogPrintf("PolisMiner -- runtime error: %s\n", e.what());
+            LogPrintf("FusionMiner -- runtime error: %s\n", e.what());
 //            return;
         }
     }

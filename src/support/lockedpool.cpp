@@ -6,7 +6,7 @@
 #include "support/cleanse.h"
 
 #if defined(HAVE_CONFIG_H)
-#include "config/polis-config.h"
+#include "config/fusion-config.h"
 #endif
 
 #ifdef WIN32

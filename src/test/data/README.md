@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Polis.
+This directory contains data-driven tests for various aspects of Fusion.
 
 License
 --------

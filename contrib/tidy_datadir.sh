@@ -7,7 +7,7 @@ if [ -d "$1" ]; then
   cd "$1"
 else
   echo "Usage: $0 <datadir>" >&2
-  echo "Removes obsolete Polis database files" >&2
+  echo "Removes obsolete Fusion database files" >&2
   exit 1
 fi
 
@@ -19,22 +19,22 @@ if [ -f wallet.dat -a -f peers.dat -a -f chainstate/CURRENT -a -f blocks/index/C
 
 case $LEVEL in
   0)
-    echo "Error: no Polis datadir detected."
+    echo "Error: no Fusion datadir detected."
     exit 1
     ;;
   1)
-    echo "Detected old Polis datadir (before 0.7)."
+    echo "Detected old Fusion datadir (before 0.7)."
     echo "Nothing to do."
     exit 0
     ;;
   2)
-    echo "Detected Polis 0.7 datadir."
+    echo "Detected Fusion 0.7 datadir."
     ;;
   3)
-    echo "Detected Polis pre-0.8 datadir."
+    echo "Detected Fusion pre-0.8 datadir."
     ;;
   4)
-    echo "Detected Polis 0.8 datadir."
+    echo "Detected Fusion 0.8 datadir."
     ;;
 esac
 

@@ -2,26 +2,26 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/poliscore/.poliscore" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/poliscore/.poliscore"
+if [ -d "/var/lib/fusioncore/.fusioncore" ]; then
+	BITCOIND_DEFAULT_DATADIR="/var/lib/fusioncore/.fusioncore"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/polisd"
+	BITCOIND_DEFAULT_DATADIR="/var/lib/fusiond"
 fi
 
-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/poliscore/polis.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/polisd}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/polisd.pid}
+BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/fusioncore/fusion.conf}
+BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/fusiond}
+BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/fusiond.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-poliscore}}
-BITCOIND_GROUP=${BITCOIND_GROUP:-poliscore}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/polisd}
+BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-fusioncore}}
+BITCOIND_GROUP=${BITCOIND_GROUP:-fusioncore}
+BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/fusiond}
 BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
 BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
 
-name="Polis Core Daemon"
-description="Polis cryptocurrency P2P network daemon"
+name="FusionX Daemon"
+description="Fusion cryptocurrency P2P network daemon"
 
-command="/usr/bin/polisd"
+command="/usr/bin/fusiond"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
@@ -71,7 +71,7 @@ checkconfig()
 {
 	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run polisd."
+		eerror "ERROR: You must set a secure rpcpassword to run fusiond."
 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Polis Core Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"FusionX Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

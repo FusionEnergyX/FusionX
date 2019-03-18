@@ -1,37 +1,37 @@
-Polis Core 0.12.1
+FusionX 0.12.1
 =====================
 
-This is the official reference wallet for Polis digital currency and comprises the backbone of the Polis peer-to-peer network. You can [download Polis Core](https://www.polispay.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Fusion digital currency and comprises the backbone of the Fusion peer-to-peer network. You can [download FusionX](https://www.fusionpay.org/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Polis on your native platform.
+The following are some helpful notes on how to run Fusion on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/polis-qt` (GUI) or
-- `bin/polisd` (headless)
+- `bin/fusion-qt` (GUI) or
+- `bin/fusiond` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run polis-qt.exe.
+Unpack the files into a directory, and then run fusion-qt.exe.
 
 ### OS X
 
-Drag Polis-Qt to your applications folder, and then run Polis-Qt.
+Drag Fusion-Qt to your applications folder, and then run Fusion-Qt.
 
 ### Need Help?
 
-* See the [Polis documentation](https://polispay.atlassian.net/wiki/display/DOC)
+* See the [Fusion documentation](https://fusionpay.atlassian.net/wiki/display/DOC)
 for help and more information.
-* Ask for help on [Polis Nation Discord](http://polischat.org)
-* Ask for help on the [Polis Forum](https://polispay.org/forum)
+* Ask for help on [Fusion Nation Discord](http://fusionchat.org)
+* Ask for help on the [Fusion Forum](https://fusionpay.org/forum)
 
 Building
 ---------------------
-The following are developer notes on how to build Polis Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build FusionX on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -41,7 +41,7 @@ The following are developer notes on how to build Polis Core on your native plat
 
 Development
 ---------------------
-The Polis Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The FusionX repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
@@ -57,8 +57,8 @@ The Polis Core repo's [root README](/README.md) contains relevant information on
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [Polis Forum](https://polispay.org/forum), in the Development & Technical Discussion board.
-* Discuss on [Polis Nation Discord](http://polischat.org)
+* Discuss on the [Fusion Forum](https://fusionpay.org/forum), in the Development & Technical Discussion board.
+* Discuss on [Fusion Nation Discord](http://fusionchat.org)
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

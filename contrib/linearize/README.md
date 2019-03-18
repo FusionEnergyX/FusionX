@@ -1,5 +1,5 @@
 # Linearize
-Construct a linear, no-fork, best version of the Polis blockchain. The scripts
+Construct a linear, no-fork, best version of the Fusion blockchain. The scripts
 run using Python 3 but are compatible with Python 2.
 
 ## Step 0: Install dash_hash
@@ -24,7 +24,7 @@ standalone hash lists but safe to use with linearize-data.py, which will output
 the same data no matter which byte format is chosen.
 
 The `linearize-hashes` script requires a connection, local or remote, to a
-JSON-RPC server. Running `polisd` or `polis-qt -server` will be sufficient.
+JSON-RPC server. Running `fusiond` or `fusion-qt -server` will be sufficient.
 
 ## Step 2: Copy local block data
 
@@ -42,7 +42,7 @@ will be printed.
 respectively, to the current time and to the timestamp of the most recent block
 written to the script's blockchain.
 * `genesis`: The hash of the genesis block in the blockchain. (default is '00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6', mainnet)
-* `input`: polisd blocks/ directory containing blkNNNNN.dat
+* `input`: fusiond blocks/ directory containing blkNNNNN.dat
 * `hashlist`: text file containing list of block hashes created by
 linearize-hashes.py.
 * `max_out_sz`: Maximum size for files created by the `output_file` option.

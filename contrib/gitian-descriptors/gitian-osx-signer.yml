@@ -1,5 +1,5 @@
 ---
-name: "polis-dmg-signer"
+name: "fusion-dmg-signer"
 suites:
   - "bionic"
 architectures:
@@ -7,10 +7,10 @@ architectures:
 packages:
   - "faketime"
 remotes:
-  - "url": "https://github.com/polispay/polis-detached-sigs.git"
+  - "url": "https://github.com/fusionpay/fusion-detached-sigs.git"
     "dir": "signature"
 files:
-  - "poliscore-osx-unsigned.tar.gz"
+  - "fusioncore-osx-unsigned.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
@@ -25,8 +25,8 @@ script: |
     echo "\$REAL \$@" >> $WRAP_DIR/${prog}
     chmod +x ${WRAP_DIR}/${prog}
   done
-  UNSIGNED=poliscore-osx-unsigned.tar.gz
-  SIGNED=poliscore-osx-signed.dmg
+  UNSIGNED=fusioncore-osx-unsigned.tar.gz
+  SIGNED=fusioncore-osx-signed.dmg
   tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
   ./detached-sig-apply.sh ${UNSIGNED} signature/osx

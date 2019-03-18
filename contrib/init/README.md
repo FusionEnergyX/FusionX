@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: polisd.service
-Upstart: polisd.conf
-OpenRC:  polisd.openrc
-         polisd.openrcconf
-CentOS:  polisd.init
-OS X:    org.polis.polisd.plist
+SystemD: fusiond.service
+Upstart: fusiond.conf
+OpenRC:  fusiond.openrc
+         fusiond.openrcconf
+CentOS:  fusiond.init
+OS X:    org.fusion.fusiond.plist
 
 have been made available to assist packagers in creating node packages here.
 

@@ -143,7 +143,7 @@ public:
 };
 
 /**
- * Polis RPC command dispatcher.
+ * Fusion RPC command dispatcher.
  */
 class CRPCTable
 {

@@ -4,7 +4,7 @@
 
 #include "chain.h"
 #include "util.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 #include "test/test_random.h"
 
 #include <vector>

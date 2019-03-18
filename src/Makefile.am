@@ -1,6 +1,6 @@
 # Copyright (c) 2013-2017 The Bitcoin Core developers
 # Copyright (c) 2014-2018 The Dash Core developers
-# Copyright (c) 2018-2019 The Polis Core developers
+# Copyright (c) 2018-2019 The FusionX developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,23 +26,23 @@ BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAG
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBBITCOIN_SERVER=libpolis_server.a
-LIBBITCOIN_COMMON=libpolis_common.a
-LIBBITCOIN_CONSENSUS=libpolis_consensus.a
-LIBBITCOIN_CLI=libpolis_cli.a
-LIBBITCOIN_UTIL=libpolis_util.a
-LIBBITCOIN_CRYPTO=crypto/libpolis_crypto.a
-LIBBITCOINQT=qt/libpolisqt.a
+LIBBITCOIN_SERVER=libfusion_server.a
+LIBBITCOIN_COMMON=libfusion_common.a
+LIBBITCOIN_CONSENSUS=libfusion_consensus.a
+LIBBITCOIN_CLI=libfusion_cli.a
+LIBBITCOIN_UTIL=libfusion_util.a
+LIBBITCOIN_CRYPTO=crypto/libfusion_crypto.a
+LIBBITCOINQT=qt/libfusionqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libpolis_zmq.a
+LIBBITCOIN_ZMQ=libfusion_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libpolisconsensus.la
+LIBBITCOINCONSENSUS=libfusionconsensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libpolis_wallet.a
+LIBBITCOIN_WALLET=libfusion_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -67,15 +67,15 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += polisd
+  bin_PROGRAMS += fusiond
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += polis-cli polis-tx
+  bin_PROGRAMS += fusion-cli fusion-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# polis core #
+# fusion core #
 BITCOIN_CORE_H = \
   addrdb.h \
   activemasternode.h \
@@ -205,12 +205,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libpolis_util_a-clientversion.$(OBJEXT): obj/build.h
+libfusion_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between polisd and polis-qt
-libpolis_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libpolis_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_server_a_SOURCES = \
+# server: shared between fusiond and fusion-qt
+libfusion_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libfusion_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_server_a_SOURCES = \
   activemasternode.cpp \
   addrman.cpp \
   addrdb.cpp \
@@ -272,20 +272,20 @@ libpolis_server_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
-libpolis_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libpolis_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_zmq_a_SOURCES = \
+libfusion_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libfusion_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between polisd and polis-qt, but only linked
+# wallet: shared between fusiond and fusion-qt, but only linked
 # when wallet enabled
-libpolis_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libpolis_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_wallet_a_SOURCES = \
+libfusion_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libfusion_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_wallet_a_SOURCES = \
   kernel.cpp \
   keepass.cpp \
   blocksigner.cpp \
@@ -302,9 +302,9 @@ libpolis_wallet_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libpolis_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
-crypto_libpolis_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
-crypto_libpolis_crypto_a_SOURCES = \
+crypto_libfusion_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
+crypto_libfusion_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
+crypto_libfusion_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/common.h \
@@ -323,7 +323,7 @@ crypto_libpolis_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # x11
-crypto_libpolis_crypto_a_SOURCES += \
+crypto_libfusion_crypto_a_SOURCES += \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -349,9 +349,9 @@ crypto_libpolis_crypto_a_SOURCES += \
   crypto/sph_types.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libpolis_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libpolis_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_consensus_a_SOURCES = \
+libfusion_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libfusion_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -368,7 +368,7 @@ libpolis_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/polisconsensus.cpp \
+  script/fusionconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -383,10 +383,10 @@ libpolis_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between polisd, and polis-qt and non-server tools
-libpolis_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libpolis_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_common_a_SOURCES = \
+# common: shared between fusiond, and fusion-qt and non-server tools
+libfusion_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libfusion_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   bip39.cpp \
@@ -410,9 +410,9 @@ libpolis_common_a_SOURCES = \
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libpolis_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libpolis_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_util_a_SOURCES = \
+libfusion_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libfusion_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -431,31 +431,31 @@ libpolis_util_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libpolis_util_a_SOURCES += compat/glibc_compat.cpp
+libfusion_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between polis-cli and polis-qt
-libpolis_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libpolis_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpolis_cli_a_SOURCES = \
+# cli: shared between fusion-cli and fusion-qt
+libfusion_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libfusion_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusion_cli_a_SOURCES = \
   rpc/client.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_libpolis_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libfusion_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# polisd binary #
-polisd_SOURCES = polisd.cpp
-polisd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-polisd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-polisd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# fusiond binary #
+fusiond_SOURCES = fusiond.cpp
+fusiond_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+fusiond_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+fusiond_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-polisd_SOURCES += polisd-res.rc
+fusiond_SOURCES += fusiond-res.rc
 endif
 
-polisd_LDADD = \
+fusiond_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -468,37 +468,37 @@ polisd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-polisd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+fusiond_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# polis-cli binary #
-polis_cli_SOURCES = polis-cli.cpp
-polis_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-polis_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-polis_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# fusion-cli binary #
+fusion_cli_SOURCES = fusion-cli.cpp
+fusion_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+fusion_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+fusion_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-polis_cli_SOURCES += polis-cli-res.rc
+fusion_cli_SOURCES += fusion-cli-res.rc
 endif
 
-polis_cli_LDADD = \
+fusion_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
-polis_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+fusion_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# polis-tx binary #
-polis_tx_SOURCES = polis-tx.cpp
-polis_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-polis_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-polis_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# fusion-tx binary #
+fusion_tx_SOURCES = fusion-tx.cpp
+fusion_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+fusion_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+fusion_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-polis_tx_SOURCES += polis-tx-res.rc
+fusion_tx_SOURCES += fusion-tx-res.rc
 endif
 
-polis_tx_LDADD = \
+fusion_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -506,22 +506,22 @@ polis_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-polis_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+fusion_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# polisconsensus library #
+# fusionconsensus library #
 if BUILD_BITCOIN_LIBS
-include_HEADERS = script/polisconsensus.h
-libpolisconsensus_la_SOURCES = $(crypto_libpolis_crypto_a_SOURCES) $(libpolis_consensus_a_SOURCES)
+include_HEADERS = script/fusionconsensus.h
+libfusionconsensus_la_SOURCES = $(crypto_libfusion_crypto_a_SOURCES) $(libfusion_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libpolisconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libfusionconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libpolisconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libpolisconsensus_la_LIBADD = $(LIBSECP256K1)
-libpolisconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libpolisconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libfusionconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libfusionconsensus_la_LIBADD = $(LIBSECP256K1)
+libfusionconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libfusionconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -552,12 +552,12 @@ DISTCLEANFILES = obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/polis-config.h: config/stamp-h1
+config/fusion-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/polis-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/fusion-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/polis-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/polis-config.h.in
+$(top_srcdir)/$(subdir)/config/fusion-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/fusion-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

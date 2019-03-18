@@ -1,6 +1,6 @@
-usr/local/bin/polis-qt usr/bin
-share/pixmaps/polis32.xpm usr/share/pixmaps
-share/pixmaps/polis16.xpm usr/share/pixmaps
-share/pixmaps/polis128.png usr/share/pixmaps
-debian/polis-qt.desktop usr/share/applications
-debian/polis-qt.protocol usr/share/kde4/services/
+usr/local/bin/fusion-qt usr/bin
+share/pixmaps/fusion32.xpm usr/share/pixmaps
+share/pixmaps/fusion16.xpm usr/share/pixmaps
+share/pixmaps/fusion128.png usr/share/pixmaps
+debian/fusion-qt.desktop usr/share/applications
+debian/fusion-qt.protocol usr/share/kde4/services/

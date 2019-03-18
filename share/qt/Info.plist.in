@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Polis-Qt</string>
+  <string>Fusion-Qt</string>
   
   <key>CFBundleName</key>
-  <string>Polis-Qt</string>
+  <string>Fusion-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.polis.Polis-Qt</string>
+  <string>org.fusion.Fusion-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.polis.PolisPayment</string>
+      <string>org.fusion.FusionPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>polis</string>
+        <string>fusion</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.polis.paymentrequest</string>
+      <string>org.fusion.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Polis payment request</string>
+      <string>Fusion payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-polis-payment-request</string>
+        <string>application/x-fusion-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>polispaymentrequest</string>
+          <string>fusionpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.polis.paymentrequest</string>
+        <string>org.fusion.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

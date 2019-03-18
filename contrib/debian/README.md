@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package polisd/polis-qt
-for Debian-based Linux systems. If you compile polisd/polis-qt yourself, there are some useful files here.
+This directory contains files used to package fusiond/fusion-qt
+for Debian-based Linux systems. If you compile fusiond/fusion-qt yourself, there are some useful files here.
 
-## polis: URI support ##
+## fusion: URI support ##
 
 
-polis-qt.desktop  (Gnome / Open Desktop)
+fusion-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install polis-qt.desktop
+	sudo desktop-file-install fusion-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your polis-qt binary to `/usr/bin`
-and the `../../share/pixmaps/polis128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your fusion-qt binary to `/usr/bin`
+and the `../../share/pixmaps/fusion128.png` to `/usr/share/pixmaps`
 
-polis-qt.protocol (KDE)
+fusion-qt.protocol (KDE)
 

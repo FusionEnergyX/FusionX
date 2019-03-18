@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Polis Core developers
+// Copyright (c) 2014-2017 The FusionX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -77,7 +77,7 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-        const char* pszTimestamp = "Polis, from people to people";
+        const char* pszTimestamp = "fusionenergyx.com 18th march 2019";
         const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
         return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -123,49 +123,40 @@ public:
     CMainParams() {
             strNetworkID = "main";
 
-            consensus.nSubsidyHalvingInterval = 262800; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
-            consensus.nMasternodePaymentsStartBlock = 15; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
-            // consensus.nMasternodePaymentsIncreaseBlock = 1569325056; // actual historical value
-            // consensus.nMasternodePaymentsIncreasePeriod = 1569325056; // 17280 - actual historical value
+            consensus.nMasternodePaymentsStartBlock = 750;
             consensus.nInstantSendConfirmationsRequired = 6;
             consensus.nInstantSendKeepLock = 24;
-            consensus.nBudgetPaymentsStartBlock = 32800; // actual historical value
-            consensus.nBudgetPaymentsCycleBlocks = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+            consensus.nBudgetPaymentsStartBlock = 7500;
+            consensus.nBudgetPaymentsCycleBlocks = 15000;
             consensus.nBudgetPaymentsWindowBlocks = 100;
-            consensus.nSuperblockStartBlock = 66464; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
-            consensus.nSuperblockCycle = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
-            consensus.nSuperblockStartHash = uint256S("0000000000000a7d13390bb29ac6d4466afb16358aeb3cd0656215392ed2468d");
+            consensus.nSuperblockStartBlock = 50000;
+            consensus.nSuperblockCycle = 16616;
+            consensus.nSuperblockStartHash = uint256S("0000000000000000000000000000000000000000000000000000000000000000");
             consensus.nGovernanceMinQuorum = 10;
             consensus.nGovernanceFilterElements = 20000;
             consensus.nMasternodeMinimumConfirmations = 15;
-            consensus.BIP34Height = 951;
-            consensus.BIP34Hash = uint256S("0x000001f35e70f7c5705f64c6c5cc3dea9449e74d5b5c7cf74dad1bcca14a8012");
-            consensus.BIP65Height = 84672;  // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
-            consensus.BIP66Height = 245817; // 00000000000b1fa2dfa312863570e13fae9ca7b5566cb27e55422620b469aefa
-            consensus.DIP0001Height = 12096;
+            consensus.BIP34Height = 8;
+            consensus.BIP34Hash = uint256S("0000000000000000000000000000000000000000000000000000000000000000");
+            consensus.BIP65Height = 10;
+            consensus.BIP66Height = 10;
+            consensus.DIP0001Height = 10000000;
             consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-            consensus.nPowTargetTimespan = 24 * 60 * 60; // polis: 1 day
-            consensus.nPowTargetSpacing = 120 ; // polis: 2 minutes
+            consensus.nPowTargetTimespan = 600;
+            consensus.nPowTargetSpacing = 120;
             consensus.fPowAllowMinDifficultyBlocks = false;
             consensus.fPowNoRetargeting = false;
-            consensus.nPowKGWHeight = 551;
-            consensus.nPowDGWHeight = 551;
 
             // Stake information
-
-            consensus.nPosTargetSpacing = 2 * 60; // PoSW: 2 minutes
-            consensus.nPosTargetTimespan = 60 * 40; // 40 minutes at max for difficulty adjustment 40 mins
+	    consensus.nLastPoWBlock = 1750;
+            consensus.nPosTargetSpacing = 2 * 60;
+            consensus.nPosTargetTimespan = 60 * 40;
             consensus.nStakeMinAge = 60 * 2;
-
-            consensus.nStakeMaxAge = 60 * 60 * 24; // one day
-            consensus.nWSTargetDiff = 0x1e0ffff0; // Genesis Difficulty
+            consensus.nStakeMaxAge = 60 * 60 * 24;
+            consensus.nWSTargetDiff = 0x1e0ffff0;
             consensus.nPoSDiffAdjustRange = 5;
 
-            // POS hard fork date
-            consensus.nLastPoWBlock = 209720;
-
-            consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
-            consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+            consensus.nRuleChangeActivationThreshold = 1916;
+            consensus.nMinerConfirmationWindow = 2016;
             consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
             consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
             consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -190,42 +181,33 @@ public:
             consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 3226; // 80% of 4032
 
             // The best chain should have at least this much work.
-            consensus.nMinimumChainWork = uint256S("0x0"); // 134622
-            // By default assume that the signatures in ancestors of this block are valid.
-            consensus.defaultAssumeValid = uint256S("0x00000000000002115266e3f36778feb4fe9488fccabcd004e13c13ab46ddfaeb"); // 134622
+            consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000000000000000000000");
+            consensus.defaultAssumeValid = uint256S("0000000000000000000000000000000000000000000000000000000000000000");
+
             /**
              * The message start string is designed to be unlikely to occur in normal data.
              * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
              * a large 32-bit integer with any alignment.
              */
-            pchMessageStart[0] = 0xbf;
+            pchMessageStart[0] = 0x44;
             pchMessageStart[1] = 0x0c;
-            pchMessageStart[2] = 0x6b;
-            pchMessageStart[3] = 0xbd;
+            pchMessageStart[2] = 0x69;
+            pchMessageStart[3] = 0xde;
             vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-            nDefaultPort = 24126;
+            nDefaultPort = 23999;
             nPruneAfterHeight = 100000;
 
-            genesis = CreateGenesisBlock(1513862955, 327643, 0x1e0ffff0, 1, 50 * COIN);
+	    genesis = CreateGenesisBlock(1552863174, 830316, 0x1e0ffff0, 1, 50 * COIN);
             consensus.hashGenesisBlock = genesis.GetHash();
-            assert(consensus.hashGenesisBlock == uint256S("0x000009701eb781a8113b1af1d814e2f060f6408a2c990db291bc5108a1345c1e"));
-            assert(genesis.hashMerkleRoot == uint256S("0x5dc9bcf5d1e4802dad0045a88849e3ad97d07a5b8aaee1114ed5ae03b98c4bfc"));
+            assert(consensus.hashGenesisBlock == uint256S("00000fd4943b9a052f6c3e18c7e8994f3fbfc501cbb73c7897876f2cbb5a4151"));
 
-            vSeeds.push_back(CDNSSeedData("dnsseed.poliscentral.org", "dnsseed.poliscentral.org"));
-            vSeeds.push_back(CDNSSeedData("dnsseed.polispay.org", "dnsseed.polispay.org"));
-
-            // polis addresses start with 'P'
-            base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55);
-            // polis script addresses start with '3'
-            base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,56);
-            // polis private keys start with '3' or 'p'
-            base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,60);
-            // polis BIP32 pubkeys start with 'ppub' (Polis Prefix)
+            base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
+            base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,95);
+            base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,164);
             base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x03)(0xE2)(0x5D)(0x7E).convert_to_container<std::vector<unsigned char> >();
-            // polis BIP32 prvkeys start with 'pprv' (Polis Prefix)
             base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x03)(0xE2)(0x59)(0x45).convert_to_container<std::vector<unsigned char> >();
 
-            // polis BIP44 coin type is '5'
+            // fusion BIP44 coin type is '5'
             nExtCoinType = 1997;
 
             vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -240,44 +222,16 @@ public:
             nPoolMaxTransactions = 3;
             nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-            strSporkAddress = "PAvya6xSBRb755Uhe2aXBFsjuyi68hTP8u";
+            strSporkAddress = "FkvfxqXCuqHyaKLyefuJCZD77gwe7rM1J7";
 
-        checkpointData = (CCheckpointData) {
-                boost::assign::map_list_of
-                        ( 0, uint256S("0x000009701eb781a8113b1af1d814e2f060f6408a2c990db291bc5108a1345c1e"))
-                        ( 10, uint256S("0x000006f686844f1873f4fcf77516eaa0a11f5762b797314c5875438c97fe4562"))
-                        ( 50, uint256S("0x00000547ca650f3be6ddf31871dfd5f76faafcd12b6083706e3d0a88c9a0cdbe"))
-                        ( 100, uint256S("0x000001c12d74ca8120d2751bb2846a5af44892045099750efe73a0cbb1eca860"))
-                        ( 200, uint256S("0x000000053db45327e7fcce9b8baf9060622c01456ac677121a6f8dcf15a98d7b"))
-                        ( 300, uint256S("0x00000000027d5a77e5c38e366465be2f21292fa3eb4d290efb6316eebcc5c0ca"))
-                        ( 400, uint256S("0x0000000000004bcce3cea51dd54da213272b7ef1aa35dca5269e92a56ec7974b"))
-                        ( 500, uint256S("0x000000000000157f78c69400b85824588e381ca4d11384e172394468a02bea32"))
-                        ( 1000, uint256S("0x00000000000061cd1733fc8b84017169be61d6a2406f21f8dca0dd9a57c7de96"))
-                        ( 2000, uint256S("0x000000000000129a0f9540f12a27a6b13242fa2d9b90f52083d860fa5ef5ec3e"))
-                        ( 3000, uint256S("0x0000000000000b5968c7af1b6e76b6958aa6058bf2f0a7aa66e67cbf4d47b690"))
-                        ( 4000, uint256S("0x0000000000000b443f7faeaaf85178b5364664ee7374259cf0f7b03e9531a108"))
-                        ( 5000, uint256S("0x00000000000004779b06d324ea780378ad8e41ddc9056129444030243faf5ad4"))
-                        ( 6000, uint256S("0x00000000000027ffb241efa3fafa43a3121216d70e79b28bc2afb8457d84cbfe"))
-                        ( 7000, uint256S("0x0000000000003a79e1b54fe39070e0d53799cdca901db726eb1c847ce8d0c890"))
-                        ( 8000, uint256S("0x000000000000045991733d2bc793d17a6fcafd7bfa35adb68b4036813b64fbf1"))
-                        ( 70000, uint256S("0x00000000000006fd8cdcc16c6432c8934e8f4b598f447db295851107437647a7"))
-                        ( 80000, uint256S("0x0000000000000eaf98251863568f95a865bba9476e060d93dfd7f02f123b0748"))
-                        ( 100000, uint256S("0x0000000000000818820ee2aecc291c7b6076984cf7c0c152869de128cf30262f"))
-                        ( 111111, uint256S("0x0000000000000bcea9747fd93566d7c37d7e07afb50066f332e17925ef776b3b"))
-                        ( 226729, uint256S("0x679fcb43f8318a3bdf42908c5290b6871426de008321589b72dcca907eeba0ea"))
-                        ( 229186, uint256S("0x79eb91ffb16cf095b4bc730ea2bd158df1aa81ee3246f64b85535b18d91593d6"))
-                        ( 262800, uint256S("0xc7ba46c8521735e42a84f9bb84b5bcc3fb6b57a2f32aee5d5c03ab52e0cf0e57"))
-                        ( 270300, uint256S("0xe31ddef7188566d6bbd8b1b74ba31b1ade883673bec95c6b4a41d5c21ab7f691"))
-                        ( 280600, uint256S("0xf2911e19b667f05b091d8217098813055aa26e1eca6c8eba5b84ff63df414208"))
+            checkpointData = (CCheckpointData) {
+            boost::assign::map_list_of
+                ( 0, uint256S("0x00000fd4943b9a052f6c3e18c7e8994f3fbfc501cbb73c7897876f2cbb5a4151"))
 
-        };
-        chainTxData = ChainTxData{
-                1549145094, // * UNIX timestamp of last checkpoint block
-                635415,    // * total number of transactions between genesis and last checkpoint
-                //   (the tx=... number in the SetBestChain debug.log lines)
-                0.1        // * estimated number of transactions per day after checkpoint
-
-        };
+            };
+            chainTxData = ChainTxData{
+		1552863174, 1, 1
+            };
     }
 };
 static CMainParams mainParams;
@@ -310,12 +264,10 @@ public:
             consensus.BIP66Height = 2075; // 0000002acdd29a14583540cb72e1c5cc83783560e38fa7081495d474fe1671f7
             consensus.DIP0001Height = 5500;
             consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-            consensus.nPowTargetTimespan = 60 * 60 * 24; // polis: 1 day
-            consensus.nPowTargetSpacing = 2 * 60; // polis: 2 minutes
+            consensus.nPowTargetTimespan = 60 * 60 * 24; // fusion: 1 day
+            consensus.nPowTargetSpacing = 2 * 60; // fusion: 2 minutes
             consensus.fPowAllowMinDifficultyBlocks = true;
             consensus.fPowNoRetargeting = false;
-            consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
-            consensus.nPowDGWHeight = 4001;
 
             // Stake info
             consensus.nPosTargetSpacing = 2 * 60; // PoSW: 2 minutes
@@ -369,27 +321,25 @@ public:
 
             genesis = CreateGenesisBlock(1518833511, 113300, 0x1e0ffff0, 1, 50 * COIN);
             consensus.hashGenesisBlock = genesis.GetHash();
-            assert(consensus.hashGenesisBlock == uint256S("0x0000009038aeaea86784e959b0b4002793adad39fc9d6f8789ed2edf99ad5c8b"));
-            assert(genesis.hashMerkleRoot == uint256S("0x5dc9bcf5d1e4802dad0045a88849e3ad97d07a5b8aaee1114ed5ae03b98c4bfc"));
+            // assert(consensus.hashGenesisBlock == uint256S("0x0000009038aeaea86784e959b0b4002793adad39fc9d6f8789ed2edf99ad5c8b"));
+            // assert(genesis.hashMerkleRoot == uint256S("0x5dc9bcf5d1e4802dad0045a88849e3ad97d07a5b8aaee1114ed5ae03b98c4bfc"));
+
+            vSeeds.push_back(CDNSSeedData("testnetseed.fusioncentral.org", "testnetseed.fusioncentral.org"));
+            vSeeds.push_back(CDNSSeedData("testnetseed2.fusioncentral.org", "testnetseed2.fusioncentral.org"));
 
 
-
-            vSeeds.push_back(CDNSSeedData("testnetseed.poliscentral.org", "testnetseed.poliscentral.org"));
-            vSeeds.push_back(CDNSSeedData("testnetseed2.poliscentral.org", "testnetseed2.poliscentral.org"));
-
-
-            // Testnet polis addresses start with 'y'
+            // Testnet fusion addresses start with 'y'
             base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-            // Testnet polis script addresses start with '8' or '9'
+            // Testnet fusion script addresses start with '8' or '9'
             base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
             // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
             base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-            // Testnet polis BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+            // Testnet fusion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
             base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-            // Testnet polis BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+            // Testnet fusion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
             base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-            // Testnet polis BIP44 coin type is '1' (All coin's testnet default)
+            // Testnet fusion BIP44 coin type is '1' (All coin's testnet default)
             nExtCoinType = 1;
 
             fMiningRequiresPeers = true;
@@ -450,13 +400,10 @@ public:
             consensus.BIP66Height = 1; // BIP66 activated immediately on devnet
             consensus.DIP0001Height = 2; // DIP0001 activated immediately on devnet
             consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-            consensus.nPowTargetTimespan = 24 * 60 * 60; // Polis: 1 day
-            consensus.nPowTargetSpacing = 2.5 * 60; // Polis: 2.5 minutes
+            consensus.nPowTargetTimespan = 24 * 60 * 60; // Fusion: 1 day
+            consensus.nPowTargetSpacing = 2.5 * 60; // Fusion: 2.5 minutes
             consensus.fPowAllowMinDifficultyBlocks = true;
             consensus.fPowNoRetargeting = false;
-            consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
-            consensus.nPowDGWHeight = 4001;
-
 
             // Stake information
 
@@ -465,8 +412,6 @@ public:
             consensus.nStakeMinAge = 60 * 60;
             consensus.nStakeMaxAge = 60 * 60 * 24; // one day
             consensus.nLastPoWBlock = 180675;
-
-
 
             consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
             consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
@@ -517,20 +462,20 @@ public:
 
             vFixedSeeds.clear();
             vSeeds.clear();
-            //vSeeds.push_back(CDNSSeedData("polisevo.org",  "devnet-seed.polisevo.org"));
+            //vSeeds.push_back(CDNSSeedData("fusionevo.org",  "devnet-seed.fusionevo.org"));
 
-            // Testnet Polis addresses start with 'y'
+            // Testnet Fusion addresses start with 'y'
             base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-            // Testnet Polis script addresses start with '8' or '9'
+            // Testnet Fusion script addresses start with '8' or '9'
             base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
             // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
             base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-            // Testnet Polis BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+            // Testnet Fusion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
             base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-            // Testnet Polis BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+            // Testnet Fusion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
             base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-            // Testnet Polis BIP44 coin type is '1' (All coin's testnet default)
+            // Testnet Fusion BIP44 coin type is '1' (All coin's testnet default)
             nExtCoinType = 1;
 
             fMiningRequiresPeers = true;
@@ -589,12 +534,10 @@ public:
             consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
             consensus.DIP0001Height = 2000;
             consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-            consensus.nPowTargetTimespan = 24 * 60 * 60; // polis: 1 day
-            consensus.nPowTargetSpacing = 120; // polis: 2.5 minutes
+            consensus.nPowTargetTimespan = 24 * 60 * 60; // fusion: 1 day
+            consensus.nPowTargetSpacing = 120; // fusion: 2.5 minutes
             consensus.fPowAllowMinDifficultyBlocks = true;
             consensus.fPowNoRetargeting = true;
-            consensus.nPowKGWHeight = 15200; // same as mainnet
-            consensus.nPowDGWHeight = 34140; // same as mainnet
             consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
             consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
             consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -635,8 +578,8 @@ public:
 
             genesis = CreateGenesisBlock(1513831322, 887612, 0x1e0ffff0, 1, 50 * COIN);
             consensus.hashGenesisBlock = genesis.GetHash();
-            assert(consensus.hashGenesisBlock == uint256S("0x00000f3b4ec57f851b3706c056eda3120875896c9970495ae2efd49b46472a05"));
-            assert(genesis.hashMerkleRoot == uint256S("0x5dc9bcf5d1e4802dad0045a88849e3ad97d07a5b8aaee1114ed5ae03b98c4bfc"));
+            // assert(consensus.hashGenesisBlock == uint256S("0x00000f3b4ec57f851b3706c056eda3120875896c9970495ae2efd49b46472a05"));
+            // assert(genesis.hashMerkleRoot == uint256S("0x5dc9bcf5d1e4802dad0045a88849e3ad97d07a5b8aaee1114ed5ae03b98c4bfc"));
 
 
             vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
@@ -666,16 +609,16 @@ public:
             };
 
             base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-            // Regtest polis script addresses start with '8' or '9'
+            // Regtest fusion script addresses start with '8' or '9'
             base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
             // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
             base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-            // Regtest polis BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+            // Regtest fusion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
             base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-            // Regtest polis BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+            // Regtest fusion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
             base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-            // Regtest polis BIP44 coin type is '1' (All coin's testnet default)
+            // Regtest fusion BIP44 coin type is '1' (All coin's testnet default)
             nExtCoinType = 1;
     }
 

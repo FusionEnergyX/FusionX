@@ -9,7 +9,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_polis.h"
+#include "test/test_fusion.h"
 
 #include <string>
 #include <vector>

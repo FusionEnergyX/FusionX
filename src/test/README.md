@@ -5,41 +5,41 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the polisd tests manually, launch `src/test/test_polis`.
+To run the fusiond tests manually, launch `src/test/test_fusion`.
 
-To add more polisd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more fusiond tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the polis-qt tests manually, launch `src/qt/test/test_polis-qt`
+To run the fusion-qt tests manually, launch `src/qt/test/test_fusion-qt`
 
-To add more polis-qt tests, add them to the `src/qt/test/` directory and
+To add more fusion-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests
 
-test_polis has some built-in command-line arguments; for
+test_fusion has some built-in command-line arguments; for
 example, to run just the getarg_tests verbosely:
 
-    test_polis --log_level=all --run_test=getarg_tests
+    test_fusion --log_level=all --run_test=getarg_tests
 
-... or to run just the doublepolis test:
+... or to run just the doublefusion test:
 
-    test_polis --run_test=getarg_tests/doublepolis
+    test_fusion --run_test=getarg_tests/doublefusion
 
-Run `test_polis --help` for the full list.
+Run `test_fusion --help` for the full list.
 
 ### Note on adding test cases
 
 The sources in this directory are unit test cases.  Boost includes a
-unit testing framework, and since Polis Core already uses boost, it makes
+unit testing framework, and since FusionX already uses boost, it makes
 sense to simply use this framework rather than require developers to
 configure some other framework (we want as few impediments to creating
 unit tests as possible).
 
-The build system is setup to compile an executable called `test_polis`
+The build system is setup to compile an executable called `test_fusion`
 that runs all of the unit tests.  The main source file is called
-test_polis.cpp. To add a new unit test file to our test suite you need 
+test_fusion.cpp. To add a new unit test file to our test suite you need 
 to add the file to `src/Makefile.test.include`. The pattern is to create 
 one test file for each class or source file for which you want to create 
 unit tests.  The file naming convention is `<source_filename>_tests.cpp` 
@@ -53,7 +53,7 @@ explaining how the boost unit test framework works:
 
 ### bitcoin-util-test.py
 
-The test directory also contains the bitcoin-util-test.py tool, which tests bitcoin utils (currently just polis-tx). This test gets run automatically during the `make check` build process. It is also possible to run the test manually from the src directory:
+The test directory also contains the bitcoin-util-test.py tool, which tests bitcoin utils (currently just fusion-tx). This test gets run automatically during the `make check` build process. It is also possible to run the test manually from the src directory:
 
 ```
 test/bitcoin-util-test.py --srcdir=[current directory]

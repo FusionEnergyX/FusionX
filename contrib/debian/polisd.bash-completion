@@ -1,2 +1,2 @@
-contrib/polisd.bash-completion	polisd
-contrib/polis-cli.bash-completion    polis-cli
+contrib/fusiond.bash-completion	fusiond
+contrib/fusion-cli.bash-completion    fusion-cli

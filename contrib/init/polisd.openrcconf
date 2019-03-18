@@ -1,25 +1,25 @@
-# /etc/conf.d/polisd: config file for /etc/init.d/polisd
+# /etc/conf.d/fusiond: config file for /etc/init.d/fusiond
 
 # Config file location
-#BITCOIND_CONFIGFILE="/etc/poliscore/polis.conf"
+#BITCOIND_CONFIGFILE="/etc/fusioncore/fusion.conf"
 
 # What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
-#BITCOIND_PIDDIR="/var/run/polisd"
+#BITCOIND_PIDDIR="/var/run/fusiond"
 
 # What filename to give the pidfile
-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/polisd.pid"
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/fusiond.pid"
 
-# Where to write polisd data (be mindful that the blockchain is large)
-#BITCOIND_DATADIR="/var/lib/polisd"
+# Where to write fusiond data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/fusiond"
 
-# User and group to own polisd process
-#BITCOIND_USER="poliscore"
-#BITCOIND_GROUP="poliscore"
+# User and group to own fusiond process
+#BITCOIND_USER="fusioncore"
+#BITCOIND_GROUP="fusioncore"
 
-# Path to polisd executable
-#BITCOIND_BIN="/usr/bin/polisd"
+# Path to fusiond executable
+#BITCOIND_BIN="/usr/bin/fusiond"
 
-# Nice value to run polisd under
+# Nice value to run fusiond under
 #BITCOIND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
