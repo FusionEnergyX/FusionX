@@ -359,7 +359,7 @@ void BitcoinGUI::createActions()
         connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
         connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
     }
-    if (!fLiteMode && settings.value("fShowGovernanceTab").toBool()) {
+    if (!fLiteMode) {
         governanceAction = new QAction(QIcon(":/icons/" + theme + "/governance"), tr("&Governance"), this);
         governanceAction->setStatusTip(tr("Show governance items"));
         governanceAction->setToolTip(governanceAction->statusTip());
@@ -581,15 +581,15 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         QSettings settings;
-        if (!fLiteMode && settings.value("fShowMasternodesTab").toBool() && masternodeAction)
+        if (!fLiteMode && masternodeAction)
         {
             toolbar->addAction(masternodeAction);
         }
-        if (!fLiteMode && settings.value("fShowGovernanceTab").toBool() && governanceAction)
+        if (!fLiteMode && governanceAction)
         {
             toolbar->addAction(governanceAction);
         }
-        toolbar->setMovable(false); // remove unused icon in upper left corner
+        toolbar->setMovable(false);
         overviewAction->setChecked(true);
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
@@ -734,10 +734,10 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
     QSettings settings;
-    if (!fLiteMode && settings.value("fShowMasternodesTab").toBool() && masternodeAction) {
+    if (!fLiteMode && masternodeAction) {
         masternodeAction->setEnabled(enabled);
     }
-    if (!fLiteMode && settings.value("fShowMasternodesTab").toBool() && governanceAction) {
+    if (!fLiteMode && governanceAction) {
         governanceAction->setEnabled(enabled);
     }
     encryptWalletAction->setEnabled(enabled);
@@ -909,7 +909,7 @@ void BitcoinGUI::gotoHistoryPage()
 void BitcoinGUI::gotoMasternodePage()
 {
     QSettings settings;
-    if (!fLiteMode && settings.value("fShowMasternodesTab").toBool() && masternodeAction) {
+    if (!fLiteMode && masternodeAction) {
         masternodeAction->setChecked(true);
         if (walletFrame) walletFrame->gotoMasternodePage();
     }
@@ -918,7 +918,7 @@ void BitcoinGUI::gotoMasternodePage()
 void BitcoinGUI::gotoGovernancePage()
 {
     QSettings settings;
-    if (!fLiteMode && settings.value("fShowGovernanceTab").toBool() && governanceAction) {
+    if (!fLiteMode && governanceAction) {
         governanceAction->setChecked(true);
         if (walletFrame) walletFrame->gotoGovernancePage();
     }
@@ -955,9 +955,9 @@ void BitcoinGUI::updateNetworkState()
     switch(count)
     {
     case 0: icon = ":/icons/" + theme + "/connect_0"; break;
-    case 1: case 2: case 3: icon = ":/icons/" + theme + "/connect_1"; break;
-    case 4: case 5: case 6: icon = ":/icons/" + theme + "/connect_2"; break;
-    case 7: case 8: case 9: icon = ":/icons/" + theme + "/connect_3"; break;
+    case 1: icon = ":/icons/" + theme + "/connect_1"; break;
+    case 2: icon = ":/icons/" + theme + "/connect_2"; break;
+    case 3: icon = ":/icons/" + theme + "/connect_3"; break;
     default: icon = ":/icons/" + theme + "/connect_4"; break;
     }
 

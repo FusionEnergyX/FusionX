@@ -1298,9 +1298,9 @@ CAmount GetBlockSubsidy(int nPrevHeight, const Consensus::Params& consensusParam
 {
     CAmount nSubsidy = 0 * COIN;
 
-    if (nPrevHeight <= 1) {
-        nSubsidy = 1000000 * COIN;
-    } else if (nPrevHeight > 1 && nPrevHeight <= 50000) {
+    // why does dash do it this way?
+    if (nPrevHeight == 1) nSubsidy = 1000000 * COIN;
+    if (nPrevHeight > 1 && nPrevHeight <= 50000) {
         nSubsidy = 25 * COIN;
     } else if (nPrevHeight > 50000 && nPrevHeight <= 100000) {
         nSubsidy = 20 * COIN;

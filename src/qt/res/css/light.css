@@ -71,7 +71,7 @@ QMessageBox {
 
 QLabel { /* Base Text Size & Color */
     font-size:12px;
-    color:#333333;
+    color:#ffffff;
 }
 
 .QCheckBox { /* Checkbox Labels */
@@ -791,7 +791,7 @@ QWidget .QFrame#frame .QLabel#labelBlockchainInfo { /* Available Balance Label *
 QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:16px;
-    color:#2E4D7C;
+    color:#ffffff;
     margin-left:0px;
     font-weight: bold;
 }
@@ -806,6 +806,7 @@ QWidget .QFrame#frame .QLabel#labelPendingText { /* Pending Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -815,6 +816,7 @@ QWidget .QFrame#frame .QLabel#labelStakeBalanceText { /* Stake Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -824,6 +826,7 @@ QWidget .QFrame#frame .QLabel#labelStakeStatusText { /* Stake Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -833,6 +836,7 @@ QWidget .QFrame#frame .QLabel#labelStakeInputsText { /* Stake Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -842,6 +846,7 @@ QWidget .QFrame#frame .QLabel#labelStatusText { /* Wallet Status Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -860,6 +865,7 @@ QWidget .QFrame#frame .QLabel#labelBlocksText { /* Blocks Status Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -869,6 +875,7 @@ QWidget .QFrame#frame .QLabel#labelMnListText { /* Masternode List Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -878,6 +885,7 @@ QWidget .QFrame#frame .QLabel#labelGobjectListText { /* Gobject List Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -913,6 +921,7 @@ QWidget .QFrame#frame .QLabel#labelImmatureText { /* Immature Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;
@@ -934,6 +943,7 @@ QWidget .QFrame#frame .QLabel#labelTotalText { /* Total Balance Label */
     qproperty-alignment: 'AlignVCenter | AlignCenter';
     min-width:160px;
     font-size:12px;
+    color:#000000;
     background-color:#F8F6F6;
     margin-right:5px;
     padding-right:5px;

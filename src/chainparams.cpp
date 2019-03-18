@@ -123,7 +123,6 @@ public:
     CMainParams() {
             strNetworkID = "main";
 
-            consensus.nMasternodePaymentsStartBlock = 750;
             consensus.nInstantSendConfirmationsRequired = 6;
             consensus.nInstantSendKeepLock = 24;
             consensus.nBudgetPaymentsStartBlock = 7500;
@@ -147,7 +146,7 @@ public:
             consensus.fPowNoRetargeting = false;
 
             // Stake information
-	    consensus.nLastPoWBlock = 1750;
+	    consensus.nLastPoWBlock = 1250;
             consensus.nPosTargetSpacing = 2 * 60;
             consensus.nPosTargetTimespan = 60 * 40;
             consensus.nStakeMinAge = 60 * 2;
@@ -189,17 +188,17 @@ public:
              * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
              * a large 32-bit integer with any alignment.
              */
-            pchMessageStart[0] = 0x44;
-            pchMessageStart[1] = 0x0c;
-            pchMessageStart[2] = 0x69;
-            pchMessageStart[3] = 0xde;
+            pchMessageStart[0] = 0x94;
+            pchMessageStart[1] = 0x5c;
+            pchMessageStart[2] = 0x39;
+            pchMessageStart[3] = 0xae;
             vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-            nDefaultPort = 23999;
+            nDefaultPort = 24999;
             nPruneAfterHeight = 100000;
 
-	    genesis = CreateGenesisBlock(1552863174, 830316, 0x1e0ffff0, 1, 50 * COIN);
+	    genesis = CreateGenesisBlock(1552867200, 1546003, 0x1e0ffff0, 1, 50 * COIN);
             consensus.hashGenesisBlock = genesis.GetHash();
-            assert(consensus.hashGenesisBlock == uint256S("00000fd4943b9a052f6c3e18c7e8994f3fbfc501cbb73c7897876f2cbb5a4151"));
+            assert(consensus.hashGenesisBlock == uint256S("000005e08aaebc322f66fd34fb8a15692224639b7924548218eeb127b96e84a6"));
 
             base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
             base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,95);
@@ -226,11 +225,11 @@ public:
 
             checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-                ( 0, uint256S("0x00000fd4943b9a052f6c3e18c7e8994f3fbfc501cbb73c7897876f2cbb5a4151"))
+                ( 0, uint256S("0x000005e08aaebc322f66fd34fb8a15692224639b7924548218eeb127b96e84a6"))
 
             };
             chainTxData = ChainTxData{
-		1552863174, 1, 1
+		1552867200, 1, 1
             };
     }
 };
@@ -243,8 +242,7 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
             strNetworkID = "test";
-            consensus.nSubsidyHalvingInterval = 1569325056;
-            consensus.nMasternodePaymentsStartBlock = 15; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
+
             consensus.nMasternodePaymentsIncreaseBlock = 1569325056;
             consensus.nMasternodePaymentsIncreasePeriod = 1569325056;
             consensus.nInstantSendConfirmationsRequired = 2;
@@ -380,8 +378,7 @@ class CDevNetParams : public CChainParams {
 public:
     CDevNetParams() {
             strNetworkID = "dev";
-            consensus.nSubsidyHalvingInterval = 210240;
-            consensus.nMasternodePaymentsStartBlock = 4010; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
+
             consensus.nMasternodePaymentsIncreaseBlock = 4030;
             consensus.nMasternodePaymentsIncreasePeriod = 10;
             consensus.nInstantSendConfirmationsRequired = 2;
@@ -513,8 +510,7 @@ class CRegTestParams : public CChainParams {
 public:
     CRegTestParams() {
             strNetworkID = "regtest";
-            consensus.nSubsidyHalvingInterval = 150;
-            consensus.nMasternodePaymentsStartBlock = 240;
+
             consensus.nMasternodePaymentsIncreaseBlock = 350;
             consensus.nMasternodePaymentsIncreasePeriod = 10;
             consensus.nInstantSendConfirmationsRequired = 2;
