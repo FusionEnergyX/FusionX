@@ -1192,6 +1192,8 @@ bool GetTransaction(const uint256 &hash, CTransactionRef &txOut, const Consensus
 }
 
 bool CheckHeaderProof(const CBlockHeader& block, const Consensus::Params& consensusParams) {
+    if (block.nTime >= 1553174454)
+	    return CheckHeaderProofOfStake(block, consensusParams);
     return CheckHeaderProofOfWork(block, consensusParams);
 }
 
@@ -1199,7 +1201,7 @@ bool CheckIndexProof(const CBlockIndex& block, const Consensus::Params& consensu
 {
     // Get the hash of the proof
     // After validating the PoS block the computed hash proof is saved in the block index, which is used to check the index
-    bool IsPosBlock = block.nTime >= 1540526903;
+    bool IsPosBlock = (block.nTime >= 1553174454);
     uint256 hashProof = IsPosBlock ? block.GetBlockHash() : block.hashProofOfStake;
     // Check for proof after the hash proof is computed
     if (IsPosBlock ) {
