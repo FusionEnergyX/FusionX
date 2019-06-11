@@ -1390,7 +1390,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             pfrom->fDisconnect = true;
             return false;
         }
-        if (nVersion < MIN_PEER_PROTO_VERSION)
+        if (nVersion < MIN_PEER_PROTO_VERSION && pfrom->nStartingHeight < 55000)
         {
             // disconnect from peers older than this proto version
             LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->id, nVersion);
